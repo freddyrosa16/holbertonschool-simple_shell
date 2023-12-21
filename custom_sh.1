@@ -1,0 +1,83 @@
+.TH hsh 1 2023-12-22 GNU
+
+.SH NAME
+.B _printf \- custom format and print data
+
+.SH SYNOPSIS
+.B #include "main.h"
+
+.B int _printf(const char *\fIformat\fR, ...)
+
+.SH DESCRIPTION
+The custom \fB_printf\fR() function produces an output according to the \fIformat\fR given by the user. The function writes output to the \fIstdout\fR, the standard output stream. Depending on the \fIformat\fR that specifies which function to perform.
+
+.SS Format of the format string
+The format string starts with the character \fI%\fR followed by a \fIfunction specifier\fR.
+The arguments must correspond to the \fIconversion specifier\fR. The function also prints string literals.
+
+.SS Conversion Specifiers
+.TP
+.BR d ", "i
+The \fIint\fR specifier returns integers to the standard output. The default percision is 1.
+.TP
+.B c
+The \fIchar\fR specifier retqunrs a character to the standard output.
+.TP
+.B s
+The \fIstring\fR specifier returns a given array of characters to the standard output.
+   
+.SH EXAMPLES
+.BR d ", "i
+.nf
+#include "main.h"
+#include <stdio.h>
+void main(void)
+{
+	int items = 5;
+
+	_printf("There are %d items.\\n", items);
+}
+
+outputs: "There are \fI5\fR items."
+.fi
+
+.BR c
+.nf
+#include "main.h"
+#include <stdio.h>
+void first_letter(char *word)
+{
+	char letter = word[0];
+	_printf("%s starts with: %c\\n", word, letter);
+}
+outputs: character at \fI0th index\fR of \fIword\fR.
+.fi
+
+.BR s
+.nf
+#include "main.h"
+#include <stdio.h>
+#include <string.h>
+int print_string(char *arr)
+{
+	char *str = (char *)malloc((strlen(arr) + 1) * sizeof(char));
+	
+	strcpy(str, arr);
+	_printf("Applicant Name: %s\\n", str);
+	
+	free(str);
+	return (0);
+}
+int main(void)
+{
+	char name[] = "Thomas Anderson";
+
+	print_string(name);
+	return (0);
+}
+outputs: "Applicant Name: \fIThomas Anderson\fR"
+.fi
+.SH AUTHORS
+.B Armando Luis Marrero & Angelo Garcia
+.SH COPYRIGHT
+.B printf foundation, we deal in printfs
