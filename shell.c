@@ -1,4 +1,4 @@
-#include <stdio.h>.
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/types.h>
@@ -7,7 +7,7 @@
 
 int main(void)
 {
-	size_t buf_size = 0;
+	size_t len, buf_size = 0;
 	char *buf = NULL;
 	char *token;
 	int status, i = 0;
