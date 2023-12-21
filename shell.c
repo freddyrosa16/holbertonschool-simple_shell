@@ -14,12 +14,24 @@ int main(void)
 	char **array;
 	pid_t child_pid;
 
+	array = malloc(sizeof(char *) * 1024);
+
 	while(1)
 	{
-		write(1, "#cisfun$ ", 9);
-		getline(&buf, &buf_size, stdin);
+		if (isatty(STDIN_FILENO))
+		{
+			write(1, "#cisfun$ ", 9);
+			getline(&buf, &buf_size, stdin);
+		}
+		else
+		{
+			if (getline(&buf, &buf_size, stdin) == -1)
+			{
+				break;
+			}
+		}
 		token = strtok(buf, "\t\n");
-		array = malloc(sizeof(char *) * 1024);
+		i = 0;
 
 		while (token)
 		{
@@ -27,8 +39,8 @@ int main(void)
 			token = strtok(NULL, "\t\n");
 			i++;
 		}
-			array[i] = NULL;
-			child_pid = fork();
+		array[i] = NULL;
+		child_pid = fork();
 
 		if (child_pid == 0)
 		{
@@ -40,6 +52,8 @@ int main(void)
 			wait(&status);
 		}
 		i = 0;
-		free(array);
 	}
+	free(array);
+	free(buf);
+	return (0);
 }
