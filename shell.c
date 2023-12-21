@@ -30,7 +30,12 @@ int main(void)
 				break;
 			}
 		}
-		token = strtok(buf, "\t\n");
+		size_t len = strlen(buf);
+		if (len > 0 && buf[len - 1] == '\n')
+		{
+			buf[len - 1] = '\0';
+		}
+		token = strtok(buf, " ");
 		i = 0;
 
 		while (token)
