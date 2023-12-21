@@ -1,17 +1,18 @@
 #include "shell.h"
-
+/**
+ * main - main
+ * Return: 0 on success
+*/
 int main(void)
 {
 	size_t buf_size = 0;
-	char *buf = NULL;
-	char *token;
+	char *buf = NULL, *token, **array;
 	int len, status, i = 0;
-	char **array;
 	pid_t child_pid;
 
 	array = malloc(sizeof(char *) * 1024);
 
-	while(1)
+	while (1)
 	{
 		if (isatty(STDIN_FILENO))
 		{
@@ -21,15 +22,12 @@ int main(void)
 		else
 		{
 			if (getline(&buf, &buf_size, stdin) == -1)
-			{
 				break;
-			}
 		}
 		len = strlen(buf);
 		if (len > 0 && buf[len - 1] == '\n')
-		{
 			buf[len - 1] = '\0';
-		}
+
 		token = strtok(buf, " ");
 		i = 0;
 
@@ -49,9 +47,8 @@ int main(void)
 			exit(EXIT_FAILURE);
 		}
 		else
-		{
 			wait(&status);
-		}
+
 		i = 0;
 	}
 	free(array);
