@@ -3,10 +3,9 @@
 int main(void)
 {
 	size_t buf_size = 0;
-	size_t len;
 	char *buf = NULL;
 	char *token;
-	int status, i = 0;
+	int len, status, i = 0;
 	char **array;
 	pid_t child_pid;
 
