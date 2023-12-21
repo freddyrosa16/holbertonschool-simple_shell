@@ -44,8 +44,9 @@ int main(void)
 
 		if (child_pid == 0)
 		{
-			if (execve(array[0], array, NULL) == -1)
-				perror("Error");
+			execvp(array[0], array);
+			perror("Error");
+			exit(EXIT_FAILURE);
 		}
 		else
 		{
