@@ -1,13 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <string.h>
+#include "shell.h"
 
 int main(void)
 {
-	size_t len, buf_size = 0;
+	size_t buf_size = 0;
 	char *buf = NULL;
 	char *token;
 	int status, i = 0;
@@ -18,6 +13,8 @@ int main(void)
 
 	while(1)
 	{
+		size_t len;
+
 		if (isatty(STDIN_FILENO))
 		{
 			write(1, "#cisfun$ ", 9);
