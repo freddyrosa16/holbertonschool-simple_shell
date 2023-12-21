@@ -3,6 +3,7 @@
 int main(void)
 {
 	size_t buf_size = 0;
+	size_t len;
 	char *buf = NULL;
 	char *token;
 	int status, i = 0;
@@ -13,8 +14,6 @@ int main(void)
 
 	while(1)
 	{
-		size_t len;
-
 		if (isatty(STDIN_FILENO))
 		{
 			write(1, "#cisfun$ ", 9);
