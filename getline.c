@@ -4,7 +4,8 @@
  * @buf: Pointer to the buffer.
  * @buf_size: Pointer to the size of the buffer.
  * Return: The number of characters read (including the newline character),
- *         or -1 if an error occurs. */
+ * or -1 if an error occurs.
+ */
 
 char _getline(size_t *buf_size)
 {
