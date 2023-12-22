@@ -17,12 +17,13 @@ int main(void)
 	int tokenc;
 	pid_t pid;
 
+	signal(SIGINT, handle_sigint);
+
 	if (isatty(STDIN_FILENO)) /*Check if the shell is in interactive mode*/
 	{
 		while (status == 95)
 		{
 			get_input(input);
-
 			parse_input(input, tokens, &tokenc);
 			/*if exit, exit shell*/
 			if (strcmp(input, "exit") == 0)
@@ -32,7 +33,6 @@ int main(void)
 			}
 			/*Fork*/
 			pid = fork();
-
 			if (pid == -1)
 			{
 				perror("☁ ERROR: Fork Failed\n");
