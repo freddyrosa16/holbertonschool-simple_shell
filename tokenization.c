@@ -5,7 +5,7 @@
  * Return: Array of strings (tokens).
  */
 
-char **tokenize_input(char *input) 
+char **tokenize_input(char *input)
 {
 	char *token;
 	int i = 0;
@@ -19,5 +19,5 @@ char **tokenize_input(char *input)
 		i++;
 	}
 	array[i] = NULL;
-	return array;
+	return (array);
 }
