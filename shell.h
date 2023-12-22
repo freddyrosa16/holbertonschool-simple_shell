@@ -9,5 +9,8 @@
 #include <string.h>
 
 extern char **environ;
+char **tokenize_input(char *inpuit);
+void _excecve(char **array);
+char _getline(size_t *buf_size);
 
 #endif
