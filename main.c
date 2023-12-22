@@ -35,13 +35,13 @@ int main(void)
 			pid = fork();
 			if (pid == -1)
 			{
-				perror("☁ ERROR: Fork Failed\n");
+				perror("☁ ERROR: ");
 				exit(EXIT_FAILURE);
 			}
 			if (pid == 0)
 			{
 				execvp(tokens[0], tokens);
-				perror("☁ ERROR: execve failed\n");
+				perror("☁ ERROR: ");
 				exit(EXIT_FAILURE);
 			} else
 			{
