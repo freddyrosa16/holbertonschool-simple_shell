@@ -1,9 +1,9 @@
 #include "shell.h"
 /**
- * excecve - Execute an external command using execve.
+ *_execve - Execute an external command using execve.
  * @array: Array of command and its arguments.
+ * Return: This function does not return.
  */
-
 void _excecve(char **array)
 {
 	int status;
