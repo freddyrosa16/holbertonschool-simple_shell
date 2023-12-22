@@ -14,6 +14,6 @@ void get_input(char *input)
 
 	getcwd(cwd, sizeof(cwd));
 
-	printf("%s@%s:%s☀  ", username, hostname, cwd);
+	printf("%s@%s:%s☀\n", username, hostname, cwd);
 	fgets(input, MAX_INPUT_SIZE, stdin);
 }

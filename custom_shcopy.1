@@ -1,0 +1,20 @@
+.TH Basic Shell 1 "2023-12-22" "version 1.0" "GNU"
+.SH NAME
+Basic Shell \- simple shell program
+.SH SYNOPSIS
+.B hsh
+[command_string]
+.SH DESCRIPTION
+This is a simple shell program. It reads commands from the user and executes them with \fBexecve()\fR. It continually prompts the user for commands and executes them until the user types \fIexit\fR or uses the \fICtrl+C\fR shortcut.
+
+The shell program checks if it is running in interactive mode then enters an infinte loop if it is. Inside this loop, it gets user input and parses it into tokens. A child process is created using \fBfork()\fR. where the given command is executed using \fBexecve()\fR. The parent process waits for the child process to finish.
+
+.SH FUNCTIONS
+.SS get_input
+This function prints the user's username, hostname, and current working directory(cwd) before taking in commands. It accepts inputs using \fBfgets()\fR.
+.SS parse_input
+This function tokenizes the user input for the shell to execute commands. It separates tokens using \fBstrtok()\fR while looking for a space and a new line.
+.SH AUTHOR
+Angelo Garcia
+
+Freddy Rosa
