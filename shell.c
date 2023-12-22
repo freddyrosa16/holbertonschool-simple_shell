@@ -11,7 +11,7 @@ int main(void)
 	char **array;
 
 	/*Main shell loop*/
-	while(1)
+	while (1)
 	{
 		buf = getline(&buf_size);
 		array = tokenization(buf);
@@ -22,4 +22,3 @@ int main(void)
 	}
 	return (0);
 }
-
