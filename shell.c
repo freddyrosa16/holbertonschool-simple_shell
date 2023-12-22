@@ -1,4 +1,6 @@
 #include "shell.h"
+/**
+ */
 
 int main(void)
 {
@@ -40,17 +42,36 @@ int main(void)
 			i++;
 		}
 		array[i] = NULL;
-		child_pid = fork();
 
-		if (child_pid == 0)
+		if (strcmp(array[0], "env") == 0)
 		{
-			execvp(array[0], array);
-			perror("Error");
-			exit(EXIT_FAILURE);
+			char **env_ptr = environ;
+			while (*env_ptr != NULL)
+			{
+				printf("%s\n", *env_ptr);
+				env_ptr++;
+			}
+		}
+		else if (strcmp(array[0], "exit") == 0)
+		{
+			free(array);
+			free(buf);
+			exit(0);
 		}
 		else
 		{
-			wait(&status);
+			child_pid = fork();
+
+			if (child_pid == 0)
+			{
+				execvp(array[0], array);
+				perror("Error");
+				exit(EXIT_FAILURE);
+			}
+			else
+			{
+				wait(&status);
+			}
 		}
 		i = 0;
 	}
