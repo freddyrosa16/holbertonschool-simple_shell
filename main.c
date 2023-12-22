@@ -14,7 +14,7 @@ int main(void)
 	int status = 95;
 	char input[MAX_INPUT_SIZE];
 	char *tokens[MAX_TOKENS];
-	int tokenc;
+	int token_count;
 	pid_t pid;
 
 	signal(SIGINT, handle_sigint);
@@ -24,7 +24,7 @@ int main(void)
 		while (status == 95)
 		{
 			get_input(input);
-			parse_input(input, tokens, &tokenc);
+			parse_input(input, tokens, &token_count);
 			/*if exit, exit shell*/
 			if (strcmp(input, "exit") == 0)
 			{
