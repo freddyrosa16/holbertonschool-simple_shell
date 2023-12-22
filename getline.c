@@ -1,6 +1,7 @@
 #include "shell.h"
 /**
- * read_input - Read a line of input from the user.
+ * getline - Read a line of input from the user.
+ * @buf: Pointer to the buffer.
  * @buf_size: Pointer to the size of the buffer.
  * Return: A pointer to the input buffer.
  */

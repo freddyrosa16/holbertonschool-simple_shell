@@ -1,7 +1,7 @@
 #include "shell.h"
 /**
- * execute_external_command - Execute an external command using fork and execvp
- * @command_array: Array of command and its arguments.
+ * excecve - Execute an external command using execve.
+ * @array: Array of command and its arguments.
  */
 
 void _excecve(char **array)
