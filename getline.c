@@ -15,6 +15,7 @@ char _getline(size_t *buf_size)
 	}
 	getline(&buf, buf_size, stdin);
 	int len = strlen(buf);
+
 	if (len > 0 && buf[len - 1] == '\n')
 	{
 		buf[len - 1] = '\0';
